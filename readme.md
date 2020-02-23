@@ -17,14 +17,14 @@ There are many options we tried but most of them are a kind of hack and has some
 
 ### Trying to set prototype of the Component in constructor.
 
-Although this option does some of the part but not completely inherit the features (as most of the features are supported underlying by stencil compiler).
-For this we would have to do most of the stuff does not work -
-- Typing would not be supported as we have not used extends keyword.
+Although this option does some of the part but not completely inherit the features (as most of the features are injected in compiled code underlying by stencil compiler).
+For this we would have to do most stuffs that does not work -
+- Typescript types for base component would not be supported as we have not used extends keyword.
 - Styles would not be inherited due to shadow DOM.
 - Have to provide hooks or custom decorators for most of the funtionalities like events, DOM treeshaking, watchers does not work.
   - As a work around we have to put several setIntervals method calls to sync data between component and its prototype and have to forcefully call render whenever a change happens in binding properties.
 
-This would be hapening all at runtime that would impact application performance.
+This would be hapening all at *runtime* that would impact application performance.
 
 ### Changes at Compile Time (Implemented in this Repository)
 

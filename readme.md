@@ -35,8 +35,7 @@ Its main responsibility would be to changed the prototype of the component at co
 - extend-util.js
 - extend-util.config.json
 
-![Image of Project Structure]
-(https://github.com/umeshsaini17/stencil-extend/blob/master/snaps/project-structure.png?raw=true)
+![](snaps/project-structure.png)
 
 2. Modefied package.json to run my scripts (when running *npm start* or *npm run build*)
 - under script section changed following -

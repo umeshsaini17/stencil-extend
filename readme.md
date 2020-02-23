@@ -35,7 +35,7 @@ Its main responsibility would be to changed the prototype of the component at co
 - extend-util.js
 - extend-util.config.json
 
-![](snaps/project-structure.png)
+<img src="snaps/project-structure.png" height="400" />
 
 2. Modefied package.json to run my scripts (when running *npm start* or *npm run build*)
 - under script section changed following -

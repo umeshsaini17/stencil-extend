@@ -36,15 +36,47 @@ Its main responsibility would be to changed the prototype of the component at co
 - extend-util.config.json
 
 ![Image of Project Structure]
-(https://octodex.github.com/images/yaktocat.png)
+(https://github.com/umeshsaini17/stencil-extend/blob/master/snaps/project-structure.png?raw=true)
 
 2. Modefied package.json to run my scripts (when running *npm start* or *npm run build*)
 - under script section changed following -
   - "build": "node extend-util.js --docs"
   - "start": "node extend-util.js --watch --serve
 
-![Image of Project Structure]
-(https://octodex.github.com/images/yaktocat.png)
+```json
+
+{
+  "name": "stencil-extend-example",
+  "version": "0.0.1",
+  "description": "Stencil Component Starter",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "es2015": "dist/esm/index.mjs",
+  "es2017": "dist/esm/index.mjs",
+  "types": "dist/types/index.d.ts",
+  "collection": "dist/collection/collection-manifest.json",
+  "collection:main": "dist/collection/index.js",
+  "unpkg": "dist/stencil-extend-example/stencil-extend-example.js",
+  "files": [
+    "dist/",
+    "loader/"
+  ],
+  "scripts": {
+    "build": "node extend-util.js --docs",
+    "start": "node extend-util.js --watch --serve",
+    "start-dev": "stencil build --dev --watch --serve",
+    "test": "stencil test --spec --e2e",
+    "test.watch": "stencil test --spec --e2e --watchAll",
+    "generate": "stencil generate"
+  },
+  "devDependencies": {
+    "@stencil/core": "^1.8.4"
+  },
+  "license": "MIT"
+}
+
+
+```
 
 3. In any component if we want to extend another component use like this -
 

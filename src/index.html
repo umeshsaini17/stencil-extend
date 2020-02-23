@@ -8,14 +8,6 @@
   <script type="module" src="/build/stencil-extend-example.esm.js"></script>
   <script nomodule src="/build/stencil-extend-example.js"></script>
 
-  <script>
-    if(this.customElements)
-      try{customElements.define('built-in',document.createElement('p').constructor,{'extends':'p'})}
-      catch(s){document.write('<script src="//unpkg.com/@ungap/custom-elements-builtin"><\x2fscript>')}
-    else
-      document.write('<script src="//unpkg.com/document-register-element"><\x2fscript>');
-    </script>
-
 </head>
 <body>
 

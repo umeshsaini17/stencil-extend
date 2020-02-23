@@ -1,0 +1,8 @@
+{
+    "extendingComponents": [
+        {
+            "name": "my-menu-pro-v2",
+            "from": "my-menu"
+        }
+    ]
+}

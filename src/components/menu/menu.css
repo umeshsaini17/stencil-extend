@@ -1,0 +1,46 @@
+:host {
+    display: block;
+    width: 300px;
+    background-color: #eee;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.menu-bar > .header {
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.menu-bar > .footer {
+    border-top: 1px solid #ddd;
+    text-align: right;
+    padding-top: 10px;
+
+}
+
+.menu-bar > .footer button {
+    color: #fff;
+    background-color: #335599;
+    font-weight: bold;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 10px;
+}
+
+.menu-bar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-bar li {
+    padding: 10px;
+}
+
+.menu-bar li.selected {
+    background-color: brown;
+}

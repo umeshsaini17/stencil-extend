@@ -1,0 +1,10 @@
+.footer-v2 {
+    font-size: small;
+    color: #888;
+    background-color: #ddd;
+    margin: 10px 5px 0;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    font-style: italic;
+}

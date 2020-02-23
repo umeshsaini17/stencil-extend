@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Stencil Component Starter</title>
+
+  <script type="module" src="/build/stencil-extend-example.esm.js"></script>
+  <script nomodule src="/build/stencil-extend-example.js"></script>
+
+  <script>
+    if(this.customElements)
+      try{customElements.define('built-in',document.createElement('p').constructor,{'extends':'p'})}
+      catch(s){document.write('<script src="//unpkg.com/@ungap/custom-elements-builtin"><\x2fscript>')}
+    else
+      document.write('<script src="//unpkg.com/document-register-element"><\x2fscript>');
+    </script>
+
+</head>
+<body>
+
+  <my-app first="Stencil" last="'Don't call me a framework' JS"></my-app>
+
+</body>
+</html>

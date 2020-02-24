@@ -1,0 +1,6 @@
+.stencil/*
+dist/*
+loader/*
+node_modules/*
+package-lock.json
+www/*

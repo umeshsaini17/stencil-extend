@@ -2,10 +2,11 @@
 
 const { spawn } = require("child_process");
 const fs = require('fs');
+var path = require('path');
 
 function init() {
     var myArgs = process.argv.slice(2);
-    const st = spawn("stencil", ['build'].concat(myArgs));
+    const st = spawn("stencil", ['build'].concat(myArgs), { shell: true });
     // const ls = spawn("ls", ['www/build']);  // To Test
     st.stdout.setEncoding('utf8');
     
@@ -59,10 +60,16 @@ function executeInheritanceOnProdBuild(config) {
 
 function searchForEntityFilesInFolder(dir, config) {
     console.log('--- Searching for files at: ' + dir);
-    const ls = spawn("ls", [dir]);
+    let cmd = 'ls';
+    let params = [dir];
+    if(isWinPlatform()) {
+      cmd = 'dir';
+      params = ['/b', path.normalize(dir)]
+    }
+    const ls = spawn(cmd, params, { shell: true });
+    
     ls.stdout.setEncoding('utf8');
     ls.stdout.on("data", output => {
-        
         let filesToProcess = extractComponentFileNames(output);
 
         filesToProcess.forEach(fileName => {
@@ -93,9 +100,10 @@ function processFile(config, file) {
 }
 
 function extractComponentFileNames(output) {
-    console.log('--- Extracting files to process...')
     if(output) {
-        let files = output.split('\n');
+    console.log('--- Extracting files to process...')
+      let sep = isWinPlatform() ? '\r\n' : '\n';
+        let files = output.split(sep);
         return files.filter((val) => {
             let regEx = new RegExp('p-[a-zA-Z0-9]*\.entry.js', 'g');
             return val.search(regEx) >= 0;
@@ -164,7 +172,7 @@ function extendsFeatures({parent, child}, {fileName, fileOutput}) {
 
     console.log(`------------ Writing changes to file: ${fileName}`);
     writeFileSync(fileName, fileOutput);
-    console.log(`------------ Write completed for file: ${fileName}.`);
+    console.log(`------------ Write completed for file: ${fileName}`);
 }
 
 function stringContainsName(name, string) {
@@ -195,11 +203,17 @@ function hiphenToUnderscore(tagName) {
 }
 
 function readFileSync(fileName) {
+  fileName = path.normalize(fileName);
     return fs.readFileSync(fileName);
 }
 
 function writeFileSync(fileName, fileData) {
+  fileName = path.normalize(fileName);
     fs.writeFileSync(fileName, fileData);
+}
+
+function isWinPlatform() {
+  return process.platform === "win32";;
 }
 
 function log(string, style) {

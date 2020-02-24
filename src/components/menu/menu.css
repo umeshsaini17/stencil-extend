@@ -41,6 +41,10 @@
     padding: 10px;
 }
 
+.menu-bar li:hover {
+  background-color: #888;
+}
+
 .menu-bar li.selected {
     background-color: brown;
 }

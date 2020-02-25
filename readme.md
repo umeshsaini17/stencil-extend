@@ -28,14 +28,11 @@ This would be hapening all at *runtime* that would impact application performanc
 
 ### Changes at Compile Time (Implemented in this Repository)
 
-So as a Solution I have created an extended utiity that would work at compile-time.
+So as a solution I have created an extended utiity that would work at compile-time.
 Its main responsibility would be to changed the prototype of the component at compile-time before any stencil logic hooks in.
 
-1. In the Project solution I have added 2 files for achieving this at root level -
+1. In the Project solution I have added a file at root level -
 - extend-util.js
-- extend-util.config.json
-
-<img src="snaps/project-structure.png" height="400" />
 
 2. Modefied package.json to run my scripts (when running *npm start* or *npm run build*)
 - under script section changed following -
@@ -86,14 +83,14 @@ import { Component, Prop, h } from '@stencil/core';
 import '../menu/menu';                  // Required: This will include the Extending component in same bundle.
 import { Menu } from '../menu/menu';    // Requires only to refer types of base class
 
-// This Component is inheriting features from 'my-menu' component.
-// The mapping is defined in extend-util.config.json
 @Component({
     tag: 'my-menu-pro-v2',
     styleUrl: 'menu-pro-v2.css',
     shadow: true
 })
 export class MenuProV2 {
+
+    extendsFrom: string = 'my-menu';    // extendsFrom property is used to define extending features from 'my-menu' component.
 
     // Need to declare Required Properties of base component
     @Prop() declare items: Array<{ id?: string, value: string, selected?: boolean }>;

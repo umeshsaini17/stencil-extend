@@ -3,14 +3,14 @@ import { Component, Prop, h } from '@stencil/core';
 import '../menu/menu';                  // Required: This will include the Extending component in same bundle.
 import { Menu } from '../menu/menu';    // Requires only to refer types of base class
 
-// This Component is inheriting features from 'my-menu' component.
-// The mapping is defined in extend-util.config.json
 @Component({
     tag: 'my-menu-pro-v2',
     styleUrl: 'menu-pro-v2.css',
     shadow: true
 })
 export class MenuProV2 {
+
+    extendsFrom: string = 'my-menu';    // extendsFrom property is used to define extending features from 'my-menu' component.
 
     // Need to declare Required Properties of base component
     @Prop() declare items: Array<{ id?: string, value: string, selected?: boolean }>;
